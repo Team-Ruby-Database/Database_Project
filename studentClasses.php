@@ -1,6 +1,7 @@
 <!--Team Ruby (written by victoria)
 --This file displays the list of classes students are taking.
 --when you click a class, it will link you to studentskills.php.
+--Now the Student_ID is hardcoded as 331475. Need to get it from login.php by Session. 
 --!>
 <html>
 <body>

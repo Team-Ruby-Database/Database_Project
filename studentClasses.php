@@ -1,8 +1,6 @@
 <!--Team Ruby (written by victoria)
 --This file displays the list of classes students are taking.
 --when you click a class, it will link you to studentskills.php.
---I still need to get the Student_ID from the previous page from where they log in, so it is set to 333210 for now.
---everything prints twice right now for some reason, so this isn't perfect yet. Otherwise it works.
 --!>
 <html>
 <body>

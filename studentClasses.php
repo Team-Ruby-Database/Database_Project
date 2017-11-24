@@ -10,11 +10,10 @@
 include 'db_connection.php';
 $con=OpenCon();
 echo "List of Classes"."<br><br>";
-$sql="SELECT Course_Name,Courses.Course_ID,Classes.Section,Classes.Class_ID
-	FROM Classes,Courses,student_classes
-	WHERE Course_Status='active' AND Classes.Course_ID=Courses.Course_ID AND student_classes.Student_ID=333210";
-$result=$con->query($sql);
-
+$sql="SELECT Courses.Course_ID,Course_Name,Classes.Section,Classes.Class_ID ";
+$sql1="FROM Classes,Student_Classes,Courses ";
+$sql2="WHERE Student_Classes.Class_ID=Classes.Class_ID AND Student_Classes.Student_ID=331475 AND Course_Status='active' AND Courses.Course_ID=Classes.Course_ID";
+$result=$con->query($sql.$sql1.$sql2);
 if($result->num_rows>0){
 	//output data
 	while($row=$result->fetch_assoc()){
@@ -27,7 +26,6 @@ else{
 	echo "No course active";
 	}
 CloseCon($con);
-
 ?>
 </body>
 </html>

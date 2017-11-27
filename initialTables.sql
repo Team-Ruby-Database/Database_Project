@@ -75,6 +75,7 @@ Create Table Questions(
        Question_ID INT NOT NULL AUTO_INCREMENT
        ,Question VARCHAR(255) NOT NULL
        ,Answer VARCHAR(255) NOT NULL
+       ,Student_Answer VARCHAR(255)
        ,Skill_ID INT NOT NULL
        ,PRIMARY KEY(Question_ID)
        ,FOREIGN KEY(Skill_ID) references Skills(Skill_ID)
@@ -92,13 +93,9 @@ Create Table Student_Classes(
 Create Table Student_Questions(
        Student_ID INT NOT NULL
        ,Question_ID INT NOT NULL
-       ,Student_Answer VARCHAR(255) NOT NULL
+       ,Student_Answer VARCHAR(255)
        ,Date DATE
        ,Time TIME
        ,FOREIGN KEY(Student_ID) references Students(Student_ID)
        ,FOREIGN KEY(Question_ID) references Questions(Question_ID)
 );
-
-
-
-       

@@ -1,20 +1,24 @@
-<!--Team Ruby
---This file displays a list of classes taught by the professor. 
---When clicking a class, it opens a new page professorDashboard.php
---need to add professor_id variable in the link. let's call it profID. need to remove Classes.Professor_ID=1 by Classes.Professor_ID=profID
->
-
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <?php
 // build connections
+/*--Team Ruby
+--This file displays a list of classes taught by the professor. 
+--When clicking a class, it opens a new page professorDashboard.php
+*/
 include 'db_connection.php';
- 
 $conn = OpenCon();
- 
-echo "Class List"."<br><br>";
+session_start();
 
-$sql = "SELECT Course_Name,Courses.Course_ID,Classes.Section,Classes.Class_ID FROM Classes,Courses WHERE Course_Status='active' AND Classes.Course_ID=Courses.Course_ID AND Classes.Professor_ID=1";
+//$Professor_ID = $_SESSION['Professor_ID'];
+$Professor_ID = 1; //hard coded
+$_SESSION['Professor_ID']=$Professor_ID;
+
+echo "<h1><div align='center' >Class List</div></h1>"."<br><br><br>";
+
+$sql = "SELECT Course_Name,Courses.Course_ID,Classes.Section,Classes.Class_ID FROM Classes,Courses WHERE Course_Status='active' AND Classes.Course_ID=Courses.Course_ID AND Classes.Professor_ID=$Professor_ID ORDER BY Courses.Course_ID,Section";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -22,7 +26,9 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $Course_ID=$row["Course_ID"];
         $Class_ID=$row["Class_ID"];
-        echo "<a href='studentProgress.php?Class_ID=". $Class_ID."'>".$row["Course_Name"]."-".$row["Section"]."</a><br>";
+        echo "<div align='center' >";
+        echo "<a href='classDashboard.php?Class_ID=".$Class_ID."&Course_ID=". $Course_ID."'>".$row["Course_Name"]."-".$row["Section"]."</a><br>";
+        echo '</div><br><br>';
     }
 } else {
     echo "NO course is active";

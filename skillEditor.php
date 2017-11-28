@@ -8,62 +8,54 @@
 <?php 
     session_start();
     $Course_ID=$_SESSION['Course_ID']; 
-
 	include 'db_connection.php';
 	$con=OpenCon();
-
     echo    
     '<h1>Skills Editor</h1>
-    <form id="myForm" action="">
+    <form id="myForm" action="" method="post">
       <input type="text" name="skill_name" value="">
       <input type="button" onclick="resetForm()" name="submit_skill" value="Add Skill">
     </form>
     <br><br>
     <h3>Skills</h3>
     ';
-
     //displays all skills in course
-    function displaySkills() {
-        $sql = "SELECT Skill_ID, Skill_Name FROM Skills WHERE Skills.Course_ID=$Course_ID";
-
-        $result = $con->query($sql);
+    function displaySkills($CID,$con) {
+    	//echo 'now try function display all skills';
+		$sql="SELECT Skill_Name,Skill_ID FROM Skills WHERE Skills.Course_ID=$CID";
+		$result = $con->query($sql);
+		
+		
         if ($result-> num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $Skill_ID = $row["Skill_ID"];
             $Skill_Name=$row["Skill_Name"];
-            echo '<a href='question_editor.php?Skill_ID=value value="$Skill_ID">"$Skill_Name"</a>';
-            }
+            echo '<a href="question_editor.php?Skill_ID=$Skill_ID">'.$Skill_Name.'</a><br>';
         }
-
+        }
         if(isset($_POST['Skill_ID'])) {
             $_SESSION['Skill_ID'] = $_POST['Skill_ID'];
         }
     }
-
-    displaySkills();
-
+    displaySkills($Course_ID,$con);
     //Adds Skill to DB
     if(isset($_POST['submit_skill'])){
         $input = $_POST['skill_name']; 
-
         $sql = "INSERT INTO Skills(Skill_Name,Course_ID) VALUES($input,$Course_ID)"; //inserts new Skill to DB
+        
        // displaySkills(); //re-displays everything
-
-
+       
         $sql = "SELECT Skill_ID FROM Skills WHERE Skills.Skill_Name=$input"; //displays new skill
+       	$result = $con->query($sql);
         if ($result-> num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $Skill_ID = $row["Skill_ID"];
             $Skill_Name=$row["Skill_Name"];
-            echo '<a href='question_editor.php?Skill_ID=value value="$Skill_ID">"$Skill_Name"</a>';
+            echo '<a href="question_editor.php?Skill_ID=$Skill_ID">'.$Skill_Name.'</a><br>';
+
             }
         }
-
-
     } 
-
-
-
     CloseCon($con);
 ?>
     

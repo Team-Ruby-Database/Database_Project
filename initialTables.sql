@@ -75,7 +75,6 @@ Create Table Questions(
        Question_ID INT NOT NULL AUTO_INCREMENT
        ,Question VARCHAR(255) NOT NULL
        ,Answer VARCHAR(255) NOT NULL
-       ,Student_Answer VARCHAR(255)
        ,Skill_ID INT NOT NULL
        ,PRIMARY KEY(Question_ID)
        ,FOREIGN KEY(Skill_ID) references Skills(Skill_ID)
@@ -99,3 +98,7 @@ Create Table Student_Questions(
        ,FOREIGN KEY(Student_ID) references Students(Student_ID)
        ,FOREIGN KEY(Question_ID) references Questions(Question_ID)
 );
+
+
+
+       

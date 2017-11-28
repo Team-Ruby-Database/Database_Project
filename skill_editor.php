@@ -12,9 +12,10 @@
 	$con=OpenCon();
     echo    
     '<h1>Skills Editor</h1>
-    <form id="myForm" action="" method="post">
+    <form id="myForm" action="added_skill.php" method="post">
       <input type="text" name="skill_name" value="">
-      <input type="button" onclick="resetForm()" name="submit_skill" value="Add Skill">
+<!--      <input type="button" onclick="resetForm()" name="submit_skill" value="Add Skill">-->
+    <input type="submit">
     </form>
     <br><br>
     <h3>Skills</h3>
@@ -38,13 +39,14 @@
         }
     }
     displaySkills($Course_ID,$con);
+    $_SESSION['Course_ID']=$Course_ID;
+
     //Adds Skill to DB
+<!--
     if(isset($_POST['submit_skill'])){
         $input = $_POST['skill_name']; 
         $sql = "INSERT INTO Skills(Skill_Name,Course_ID) VALUES($input,$Course_ID)"; //inserts new Skill to DB
-        
-       // displaySkills(); //re-displays everything
-       
+
         $sql = "SELECT Skill_ID FROM Skills WHERE Skills.Skill_Name=$input"; //displays new skill
        	$result = $con->query($sql);
         if ($result-> num_rows > 0) {
@@ -52,10 +54,10 @@
             $Skill_ID = $row["Skill_ID"];
             $Skill_Name=$row["Skill_Name"];
             echo '<a href="question_editor.php?Skill_ID=$Skill_ID">'.$Skill_Name.'</a><br>';
-
             }
         }
     } 
+-->
     CloseCon($con);
 ?>
     

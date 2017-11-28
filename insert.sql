@@ -47,7 +47,8 @@ insert 3 skills into the skill table
 INSERT INTO Skills
     (Skill_Name,Course_ID)
 VALUES
-    ('For Loops',1)
+    ('Linux Command',1)
+    ,('For Loops',1)
     ,('Data Type',1)
     ,('Array',2);
 
@@ -56,9 +57,9 @@ insert 3 students into the student table
 */
 INSERT INTO Students
 VALUES
-	(333210,'John','Smith','john.smith@centre.edu','pwj')
-	,(334329,'Kate','Young','kate.young@centre.edu','pwk')
-	,(331475,'Yin','Song','yin.song@centre.edu','pwy');
+	(1,'John','Smith','john.smith@centre.edu','pwj')
+	,(2,'Kate','Young','kate.young@centre.edu','pwk')
+	,(3,'Yin','Song','yin.song@centre.edu','pwy');
 
 /*
 insert a resource into the resources table
@@ -67,9 +68,10 @@ INSERT INTO Resources(
 		Reference
        ,Skill_ID)
 VALUES 
-	('www.forloop.com',1)
-	,('www.datatype.com',1)
-	,('Data Structure for Beginners',2);
+	('www.forloop.com',2)
+	,('www.datatype.com',3)
+	,('Linux: From Start To Give Up',1)
+	,('Data Structure for Beginners',4);
 
 /*
 insert a question into the question table
@@ -77,7 +79,25 @@ insert a question into the question table
 INSERT INTO Questions
 		(Question
        	,Answer
-      	 ,Skill_ID)
+      	,Skill_ID)
 VALUES 
-	('What is command to diaplay all the files in the working directory?','ls',1)
-	,('What is the output of the following code? <br> int t=0;for(int x=0;x<4;x++){t+=x;}System.out.println(t);','6',2);
+	('What is the command to diaplay all the files in the working directory?','ls',1)
+	,('What is the command to remove a file?','rm',1)
+	,('What is the output of the following code? <br> int t=0; <br> for(int x=0;x<4;x++)<br>    {t+=x;}<br>System.out.println(t);','6',2);
+	
+INSERT INTO Student_Classes
+	VALUES(1,1)
+	,(1,4)
+	,(2,1)
+	,(3,1)
+	,(3,4);
+	
+	
+INSERT INTO Student_Questions
+VALUES 
+	(1,1,'',CURDATE(),CURTIME())
+	,(1,2,'',CURDATE(),CURTIME())
+	,(2,1,'',CURDATE(),CURTIME())
+	,(2,2,'',CURDATE(),CURTIME())
+	,(3,1,'',CURDATE(),CURTIME())
+	,(3,2,'',CURDATE(),CURTIME());

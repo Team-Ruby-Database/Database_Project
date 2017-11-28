@@ -49,8 +49,9 @@ div.tab button.active {
 <body>
 <?php
 include 'db_connection.php';
+session_start();
 $con=OpenCon();
-echo "<h1><div align='center' >Skill List</div></h1>";
+echo "<h1><div align='center' >Skill List</div></h1><hr>";
 
 $Course_ID= $_GET['Course_ID'];
 $Student_ID=331475; //hardcoded
@@ -67,12 +68,17 @@ if($result->num_rows>0){
 	while($row=$result->fetch_assoc()){
 		$Skill_ID=$row["Skill_ID"];
 		///$Class_ID=$row["Class_ID"];
-		echo "<a href='question.php?Course_ID=".$Course_ID."'>".$row["Skill_Name"]."</a><br>";
+		echo "<div align='center' >";
+		echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a><br>";
+		echo '</div><br>';
 	}
 }
 else{
 	echo "No class active";
 	}
+
+$_Session['Course_ID']=$Course_ID;
+
 CloseCon($con);
 ?>     
 </body>

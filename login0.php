@@ -3,7 +3,7 @@
 <h2><div align='center' >Login</div></h2><hr>
 		       
 			      <div align='center' >
-				         <form action = "studentClasses.php">
+				         <form action = "professorClasses.php">
             <h4 class = "form-signin-heading"></h4>
             <input type = "text" class = "form-control" 
                name = "username" placeholder = "username" 

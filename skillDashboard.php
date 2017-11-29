@@ -1,3 +1,8 @@
+<!--Team Ruby
+--This file displays the list of skills for a course students are taking.
+--when you click a skill, it will link you to question.php.
+--Now the Student_ID is hardcoded as 3. Need to get it from login.php by Session. 
+--!>
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">

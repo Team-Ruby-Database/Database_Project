@@ -54,7 +54,7 @@ td,th {
 	
 	if ($totalCorrect===$questionNum) {
 		echo "<br><div align='center'><h2>You have obtained this skill!<h2></div><br><br><hr>";
-		echo '<div align="center">'.'<a href="skillDashboard.php?Course_ID='."'$Course_ID'".'" class="w3-button w3-black"><font color="yellow" align="center">Go to the Skill List</font></a></div>';}
+		echo '<div align="center">'.'<a href="skillDashboard.php?$Course_ID='."'$Course_ID'".'" class="w3-button w3-black"><font color="yellow" align="center">Go to the Skill List</font></a></div>';}
 	else {
 		echo "<br><b>Incorrectly-answered questions: </b><br><ol>";
 		foreach ($incorrect_question as $q) {

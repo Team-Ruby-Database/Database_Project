@@ -48,6 +48,35 @@
 		}
 	}
 	
+
+function listskills2($con,$Course_ID,$Student_ID){
+		//returns what skills a student acquired from a course
+		
+		//Different from listskills() because it does not echo anything
+
+		$skill_id_list = skillsForAClass($Course_ID,$con);
+		$get = array(); //skills accomplished
+		$notget = array(); //skills not yet accomplished
+		foreach ($skill_id_list as $skill_id) {
+			$id = (int) $skill_id;
+			$sql="SELECT Skill_Name FROM Skills WHERE Skill_ID = $id"; //retrieve all the skills' names of the course
+			$result = $con->query($sql);
+			if ($result->num_rows > 0) {
+	    		while($row = $result->fetch_assoc()) {
+					$Skill_Name= $row["Skill_Name"]; 
+					if (isAcquired($Student_ID,$skill_id,$con)) { //If all the questions of this skill are answered correctly, the skill is obtained.
+						array_push($get,$Skill_Name);  			//add the skill to $get array
+					
+						} 
+					else {//If not all the questions of the skill is finished, the skill is not yet obtained. 
+						array_push($notget,$Skill_Name); //add the skill to $notget array
+						}
+				}
+			}
+		}
+		return $get;
+	}
+	
 		
 	function listskills($con,$Course_ID,$Student_ID){
 		//list what skills a student acquired from a course

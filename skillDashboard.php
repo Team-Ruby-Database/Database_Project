@@ -48,13 +48,15 @@ div.tab button.active {
 
 <body>
 <?php
+//50
 include 'db_connection.php';
+include 'grade.php';
 session_start();
 $con=OpenCon();
 echo "<h1><div align='center' >Skill List</div></h1><hr>";
 
 $Course_ID= $_GET['Course_ID'];
-$Student_ID=331475; //hardcoded
+$Student_ID=3; //hardcoded
 $_Session['Student_ID']=$Student_ID;
 
 $sql="SELECT * ";
@@ -65,12 +67,22 @@ $result=$con->query($sql.$sql1.$sql2);
 
 if($result->num_rows>0){
 	//output data
+	$get=listskills2($con,$Course_ID,$Student_ID);
+	
 	while($row=$result->fetch_assoc()){
 		$Skill_ID=$row["Skill_ID"];
-		///$Class_ID=$row["Class_ID"];
-		echo "<div align='center' >";
-		echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a><br>";
-		echo '</div><br>';
+		$Skill_Name=$row["Skill_Name"];
+		if(in_array($Skill_Name,$get)){
+			echo "<div align='center' >";
+			echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a>";
+			echo "		Skill Acquired"."<br>";
+			echo '</div><br>';
+		}
+		else{
+			echo "<div align='center' >";
+			echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a>";
+			echo "		Skill Not Yet Acquired"."<br>";
+		}
 	}
 }
 else{

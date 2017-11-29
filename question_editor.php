@@ -9,6 +9,7 @@
     div {
         text-align: center;
     }
+   
     
 /* Style the buttons inside the tab */
 
@@ -18,6 +19,21 @@
     h3 {
         text-align: center;
     }
+    div{
+        text-align: center;
+    }
+    a {
+        text-align: center;
+    color: darkblue;
+    text-decoration:  none;
+  font-weight:      bold;
+    }
+        a.goback {
+            color:black;
+        }
+        a.delete {
+            color:darkred;
+        }
     
 div.tab {
     border: 1px solid white;
@@ -124,11 +140,11 @@ div.tab button.active {
     <textarea name="output_answer" cols="40" rows="5"></textarea>
 </div>
 <br>
-<div class="tab"><button onclick="addQuestion()" >Add Question</button></div>
+<div class="tab"><button id="question_button" type="submit">Add Question</button></div>
     
     
 ';
-  
+    
 
     //displays all Questions in Skill
     function displayQuestions($SID,$con) {
@@ -161,14 +177,29 @@ div.tab button.active {
             }
         }
     }
+    
+    echo '<br><br><h3>All Questions</h3>
+    <div><a>1. What is command to display all the files in the working directory?</a><a class="delete"> &#10006;</a></div>
+    
+    
+    ';
 
  
-    echo '<div><a href="skill_editor.php" class="previous">Go Back</a><div>';
+    echo '<div><a href="skill_editor.php" class="previous">Go Back</a><div>'
+        
+        ;
  ?>
 
-
+<script type="text/javascript">
+    document.getElementById("question_button").onclick = function () {
+        location.href = "added_question.html";
+    };
+</script>
 
 <script>
+    
+    
+    
     $(document).ready(function() {
    $('input[type="radio"]').click(function() {
 //       if($(this).attr('id') == 'multiple_choice') {
@@ -227,5 +258,4 @@ function filterFunction() {
 
 </body>
 </html>
-
 

@@ -60,20 +60,27 @@ $Student_ID = $_SESSION['Student_ID']; //comment out if hardcoding
 //$Student_ID = 3; //hard coded
 $_SESSION['Student_ID']=$Student_ID;
 
+//print the header
 echo "<h1><div align='center' >List of Classes</div></h1><hr>";
 
+//build sql query
 $sql="SELECT Courses.Course_ID,Course_Name,Classes.Section,Classes.Class_ID ";
 $sql1="FROM Classes,Student_Classes,Courses ";
 $sql2="WHERE Student_Classes.Class_ID=Classes.Class_ID AND Student_Classes.Student_ID=".$Student_ID." AND Course_Status='active' AND Courses.Course_ID=Classes.Course_ID";
 
+//send query
 $result=$con->query($sql.$sql1.$sql2);
 
-if($result->num_rows>0){
+
+if($result->num_rows>0){  //if there's more than zero thing returned from the query
 	//output data
+	//while there are still things to cycle through
 	while($row=$result->fetch_assoc()){
 		$Course_ID=$row["Course_ID"];
 		$Class_ID=$row["Class_ID"];
+		//set up format
 		echo "<div align='center' >";
+		//create links for each class
 		echo "<a href='skillDashboard.php?Course_ID=".$Course_ID."'>".$row["Course_Name"]."-".$row["Section"]."</a><br>";
 		echo '</div><br>';
 	}

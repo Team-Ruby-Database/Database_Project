@@ -56,8 +56,8 @@ include 'db_connection.php';
 $con=OpenCon();
 session_start();
 
-//$Student_ID = $_SESSION['Student_ID'];
-$Student_ID = 3; //hard coded
+$Student_ID = $_SESSION['Student_ID']; //comment out if hardcoding
+//$Student_ID = 3; //hard coded
 $_SESSION['Student_ID']=$Student_ID;
 
 echo "<h1><div align='center' >List of Classes</div></h1><hr>";

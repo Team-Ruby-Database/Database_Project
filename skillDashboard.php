@@ -56,7 +56,8 @@ $con=OpenCon();
 echo "<h1><div align='center' >Skill List</div></h1><hr>";
 
 $Course_ID= $_GET['Course_ID'];
-$Student_ID=3; //hardcoded
+//$Student_ID=3; //hardcoded
+$Student_ID = $_SESSION['Student_ID']; //comment out if hardcoding
 $_Session['Student_ID']=$Student_ID;
 
 $sql="SELECT * ";

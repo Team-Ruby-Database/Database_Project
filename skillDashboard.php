@@ -55,16 +55,21 @@ div.tab button.active {
 <?php
 //50
 include 'db_connection.php';
+//yin's file with neat functions
 include 'grade.php';
+//start session and connection
 session_start();
 $con=OpenCon();
+//set up format of header
 echo "<h1><div align='center' >Skill List</div></h1><hr>";
-
+//Course_ID was passed through Get, not session
 $Course_ID= $_GET['Course_ID'];
+
 //$Student_ID=3; //hardcoded
 $Student_ID = $_SESSION['Student_ID']; //comment out if hardcoding
 $_Session['Student_ID']=$Student_ID;
 
+//set up sql query for all info from skills
 $sql="SELECT * ";
 $sql1="FROM skills ";
 $sql2="WHERE Skills.Course_ID=".$Course_ID;
@@ -72,19 +77,19 @@ $sql2="WHERE Skills.Course_ID=".$Course_ID;
 $result=$con->query($sql.$sql1.$sql2);
 
 if($result->num_rows>0){
-	//output data
+	///This gets whether a student has completed a skill or not
 	$get=listskills2($con,$Course_ID,$Student_ID);
 	
 	while($row=$result->fetch_assoc()){
 		$Skill_ID=$row["Skill_ID"];
 		$Skill_Name=$row["Skill_Name"];
-		if(in_array($Skill_Name,$get)){
+		if(in_array($Skill_Name,$get)){ ///if a skill is in the $get array, it means it has been completed
 			echo "<div align='center' >";
 			echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a>";
 			echo "		Skill Acquired"."<br>";
 			echo '</div><br>';
 		}
-		else{
+		else{ //not completed
 			echo "<div align='center' >";
 			echo "<a href='question.php?Skill_ID=".$Skill_ID."'>".$row["Skill_Name"]."</a>";
 			echo "		Skill Not Yet Acquired"."<br>";

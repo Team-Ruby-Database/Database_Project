@@ -23,7 +23,7 @@ INSERT INTO Courses(
         ,Course_Code
         ,Course_Status)
 VALUES
-    ('Introduction to the CSC','CSC',117,'active')
+    ('Introduction to CSC','CSC',117,'active')
     ,('Data Structure','CSC',223,'active');
 
 /*
@@ -81,7 +81,7 @@ INSERT INTO Questions
        	,Answer
       	,Skill_ID)
 VALUES 
-	('What is the command to diaplay all the files in the working directory?','ls',1)
+	('What is the command to display all the files in the working directory?','ls',1)
 	,('What is the command to remove a file?','rm',1)
 	,('What is the output of the following code? <br> int t=0; <br> for(int x=0;x<4;x++)<br>    {t+=x;}<br>System.out.println(t);','6',2);
 	

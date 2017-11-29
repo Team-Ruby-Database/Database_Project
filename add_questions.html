@@ -1,135 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-    <title>Add Question</title>
-<style>
-.dropbtn {
-    background-color: #16D9CD;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #14BAB0;
-}
-#myInput {
-    border-box: box-sizing;
-    background-image: url('searchicon.png');
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 16px;
-    padding: 14px 20px 12px 45px;
-    border: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 230px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {background-color: #ddd}
-
-.show {display:block;}
-</style>
-</head>
-<body>
-
-<h2>Question Editor</h2>
-<p></p>
-
-<div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Select Skill</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">New Skill</a>
-    <a href="#about">For Loops</a>
-    <a href="#base">Functions</a>
-    <a href="#blog">Data Types</a>
-    <a href="#contact">Recurrsion</a>
-    <a href="#custom">Arrays</a>
-    <a href="#support">Objects</a>
-  </div>
-</div>
-    
-    <div>
-    <h3>Select Question Type</h3>
-    <form action="">
-  <input type="radio" name="question_type" value="multiple_choice">Multiple Choice<br>
-  <input type="radio" name="question_type" value="short_answer">Fill in the blank<br>
-  <input type="radio" name="question_type" value="output">Input/Output
-</form>
-        </div>
-    <div>
-    <h3>Question</h3>
-<!--
-        <form action="/action_page.php"><br>
-<input type="text" name="question">
-<br><br>
-<input type="submit">
-</form>
-    </div>
-    Or
--->
-   
-    <textarea name="Text1" cols="40" rows="5"></textarea>
-        <br><button onclick="" >Submit</button>
-    </div>
-        <div>
-        <h3>Answer</h3> 
-<!--    change this based on radio button selection-->
-           <form action="/action_page.php">
-a. <input type="text" name="answer1"><br>
-b. <input type="text" name="answer2"><br>
-c. <input type="text" name="answer3"><br>
-d. <input type="text" name="answer4">
-<br><br>
-<input type="submit">
-</form> 
-    </div>
-
-<script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>Added Skill</title>
+    </head>
+    <style>
+      h1 {
+        text-align: center;
     }
-}
-</script>
-
-</body>
+        h3 {
+        text-align: center;
+            color: darkblue;
+    }
+    a {
+    color: darkblue;
+    text-decoration:  none;
+  font-weight:      bold;
+    }
+        
+        a.goback {
+            color:black;
+        }
+         div {
+        text-align: center;
+    }
+    </style>
+    <body>
+        <h1>Skill: For Loops</h1>
+        <h1>Added Question:</h1>
+        <h3>Write the code to print "Hello World" in python.</h3>
+        <h1>Answer:</h1>
+        <h3>print("Hello World")</h3><br><br>
+        <div><a href="skill_editor.php" class="previous">Go Back</a></div>
+    </body>
 </html>
-

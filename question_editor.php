@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
     <title>Add Question</title>
 <style>
+    div {
+        text-align: center;
+    }
+    
+/* Style the buttons inside the tab */
+
+    h1 {
+        text-align: center;
+    }
+    h3 {
+        text-align: center;
+    }
+    
+div.tab {
+    border: 1px solid white;
+    background-color: white;
+   
+}
+
+div.tab button {
+    background-color: black;
+    color: yellow;
+    padding: 9px 23px;
+   
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 19px;
+}
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: white;
+    color: yellow;
+}
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: white;
+     color: black;
+}
+    
 .dropbtn {
     background-color: #16D9CD;
     color: white;
@@ -56,105 +100,51 @@
     
     
 <body>
-    
-    
-<?php
+
+<?php 
     session_start();
-    $Skill_ID=$_SESSION['Skill_ID']; 
+    $Course_ID=$_SESSION['Course_ID'];
+//    $Skill_ID=$_SESSION['Skill_ID'];
 	include 'db_connection.php';
 	$con=OpenCon();
-
-
-
-echo '
-<h2>Question Editor</h2>
-<!--
-<div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Select Skill</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">New Skill</a>
-    <a href="#about">For Loops</a>
-    <a href="#base">Functions</a>
-  </div>
-</div>
--->
     
-<!--
-<div>
-<h3>Question Type</h3>
-<form action="">
-<!--  <input id="multiple_choice" type="radio" name="question_type" value="multiple_choice">Multiple Choice<br>-->
-  <input type="radio" name="question_type" id="short_answer" value="short_answer">Short Answer<br>
-  <input type="radio" name="question_type" id="output" value="output">Input/Output
-</form>
-</div>
--->
-    
+    echo '
+<h1>Question Editor</h1>
 
 
-<!--Question-->
-<div id='question_div' style='display:none'>
+<div id="question_div">
 <h3>Question</h3>
     <textarea name="question_input" cols="40" rows="5"></textarea>
 <!--    <br><button onclick="" >Submit</button>-->
 </div>
 
-<!--Multiple Choice-->
-<!--
- <div id='multiple_choice_answer' style='display:none'>
-<h3>Multiple Choice Answer</h3> 
-<form action="/action_page.php">
-    a. <input type="text" name="answer1"><br>
-    b. <input type="text" name="answer2"><br>
-    c. <input type="text" name="answer3"><br>
-    d. <input type="text" name="answer4">
-<br><br>
-<input type="submit">
-</form> 
-</div>
--->
 
-<!--Short Answer-->
-<!--
-<div id='short_answer_answer' style='display:none'>
-    
-<h3>Short Answer</h3>
-    <textarea name="output_answer" cols="30" rows="1"></textarea>
-</div>
--->
-
-<!--Input/Output-->
-<div id='output_answer' style='display:none'>
-<h3>Output</h3>
+<div id="output_answer">
+<h3>Answer</h3>
     <textarea name="output_answer" cols="40" rows="5"></textarea>
 </div>
-<br><button onclick="addQuestion()" >Add Question</button>
+<br>
+<div class="tab"><button onclick="addQuestion()" >Add Question</button></div>
     
     
-<div>
-<h3>All Questions</h3>
-</div>
-
-';    
-    
+';
+  
 
     //displays all Questions in Skill
-    function displayQuestions() {
-        $sql = "SELECT Question, Question_ID, Questions.Question FROM Questions WHERE Questions.Skill_ID=$Skill_ID";
-
+    function displayQuestions($SID,$con) {
+        $sql = "SELECT Question, Question_ID, Questions.Question FROM Questions WHERE Questions.Skill_ID=$SID";
         $result = $con->query($sql);
         if ($result-> num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $Question_ID = $row["Question_ID"];
             $Question=$row["Question"];
-            echo '<a value="$Question_ID">"$Question"</a>';
+            echo '<a>'.$Question.'</a><br>';
             }
         }
 
     }
 
-    displayQuestions();
+//    displayQuestions(1,$con);
 
     //Adds Question to Skill in DB
     function addQuestion() {
@@ -172,10 +162,10 @@ echo '
         }
     }
 
+ 
+    echo '<div><a href="skill_editor.php" class="previous">Go Back</a><div>';
+ ?>
 
-
-    CloseCon($con);
-?>
 
 
 <script>
@@ -237,4 +227,5 @@ function filterFunction() {
 
 </body>
 </html>
+
 

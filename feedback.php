@@ -1,9 +1,3 @@
-<!--Team Ruby
---Yin Song, Victoria Cummings, Michelle Kim, Xiao Jiang
---This file links from question.php
---Displays a screen based on whether or not the student answered all the questions correctly on the previous page
---If they missed some questions, those are displayed on this screen and helpful reference material is displayed
---!>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

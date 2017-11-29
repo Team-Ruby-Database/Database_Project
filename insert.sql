@@ -24,7 +24,7 @@ INSERT INTO Courses(
         ,Course_Status)
 VALUES
     ('Introduction to the CSC','CSC',117,'active')
-    ,('Data Structure','CSC',223,'inactive');
+    ,('Data Structure','CSC',223,'active');
 
 /*
 insert 2 classes into the courses table

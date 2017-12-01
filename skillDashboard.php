@@ -1,7 +1,8 @@
 <!--Team Ruby
 --Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
---This is the README for our database application and will provide a brief 
---overview of the files and what they do.
+--This is page that comes after studentClasses.php. 
+--This takes whichever class was clicked through the link and displays all skills related to that class.
+--The next page is question.php, this file passes that one which skill has been clicked.
 --!>
 <!DOCTYPE html>
 <html>

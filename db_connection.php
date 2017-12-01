@@ -1,7 +1,8 @@
 <!--Team Ruby--
-This file builds a connection to the database HacherTracker.
+Yin Song, Victoria Cummings, Michelle Kim, Xiao Jiang
+This file builds a connection to the database HackerTracker.
 To use it, put this line on the top of your code:
-include ‘connection.php’;
+include ‘db_connection.php’;
 -->
 
 <?php

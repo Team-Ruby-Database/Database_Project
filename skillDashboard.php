@@ -1,3 +1,8 @@
+<!--Team Ruby
+--Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
+--This is the README for our database application and will provide a brief 
+--overview of the files and what they do.
+--!>
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">

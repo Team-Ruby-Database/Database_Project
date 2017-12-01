@@ -57,33 +57,45 @@ div.tab button.active {
 <body>
 
 <?php 
+	
+	//get class_id and $course_id from professorClasses.php
 	$Course_ID= $_GET['Course_ID'];
 	$Class_ID=$_GET['Class_ID'];
+	
+	//start connection to the database
 	include 'db_connection.php';
-	include 'grade.php';
 	$con=OpenCon();
+	
+	//use functions in grade.php
+	include 'grade.php'; 
+	
+	//start session
 	session_start();
-	$sql = "SELECT Courses.Course_Name,Classes.Section FROM Courses,Classes WHERE Classes.Class_ID=$Class_ID AND Courses.Course_ID=$Course_ID";
+	$Professor_ID = $_SESSION['Professor_ID'];
+	$_SESSION['Course_ID']=$Course_ID;
+	
+	//query and print class info at the header
+	$sql = "SELECT Courses.Course_Name,Courses.Course_Code,Classes.Section FROM Courses,Classes WHERE Classes.Class_ID=$Class_ID AND Courses.Course_ID=$Course_ID";
 	$result = $con->query($sql);
 	if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $Course_Name=$row["Course_Name"];
         $Section=$row["Section"];
+        $code=$row["Course_Code"];
         }
     }
     echo "<h1><div align='center' >Student Progress</div></h1>";
-    echo "<b><div align='center' >".$Course_Name.'-'.$Section."</div></b><br><br>";
+    echo "<b><div align='center' >".$Course_Name.": ".$code.'-'.$Section."</div></b><br><br>";
 
-	//A button that links to skillEditor.php
+	//A button that links to skill_editor.php
 	//pass Course_ID by session
-	$_SESSION['Course_ID']=$Course_ID;
 	echo "<div align='center' class='w3-container'>";
-	echo "<a href='skill_editor.php' class='w3-btn w3-black'><font size='4' color='yellow'>Manage Skills</font></a></div><br><br><hr>";
+	echo "<a href='skill_editor.php' class='w3-btn w3-black'><font size='4' color='yellow'>Manage Skills</font></a></div><br>";
+	echo "<div align='center'> <button class='w3-button w3-black' onclick='goBack()'><font  color='yellow'>Back</font></button></div><hr>";
 
 	//Create buttons of each student
 	//when click a student, the page displays the student's progress
 	//default displaying all students' progress in general
-	//the progress is hard coded so far
 	echo '<div class="tab">';
 	echo '<button class="tablinks" onclick="checkStudent(event,'. "'all'".')"'. 'id="defaultOpen">All Progress</button><br>';
 	$sql = "SELECT CONCAT(Student_First_Name,' ',Student_Last_Name) AS 'name',Students.Student_ID FROM Students,Student_Classes WHERE Student_Classes.Class_ID=$Class_ID AND Student_Classes.Student_ID=Students.Student_ID ORDER BY Student_First_Name,Student_Last_Name";
@@ -116,7 +128,6 @@ div.tab button.active {
 		echo '</div>';
 	}
 	}
-
 	CloseCon($con);
 	?>
 
@@ -138,6 +149,12 @@ function checkStudent(evt, studentName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-     
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </body>
 </html>

@@ -34,8 +34,10 @@ td,th {
     $Course_ID=$_SESSION['Course_ID'];
     //add student_answer to Student_Answer Table
     function addStudentAnswer($sid,$ans,$qid,$conn) {
-		$sql = 'UPDATE Student_Questions SET Student_Answer='.'"'.$ans.'"'. 'WHERE Student_ID='.'"'. $sid.'"'.' AND Question_ID='.'"'.$qid.'"';
-		mysqli_query($conn,$sql);
+		$stmt = $conn->prepare("UPDATE Student_Questions SET Student_Answer = ?,Date=CURDATE(),Time=CURTIME() WHERE Student_ID = ? AND Question_ID = ?");
+		$stmt->bind_param('sii',$ans,$sid,$qid);
+		$stmt->execute();
+		$stmt->close();
     }
     
     $totalCorrect = 0;
@@ -59,7 +61,7 @@ td,th {
 	
 	if ($totalCorrect===$questionNum) {
 		echo "<br><div align='center'><h2>You have obtained this skill!<h2></div><br><br><hr>";
-		echo '<div align="center">'.'<a href="skillDashboard.php?$Course_ID='."'$Course_ID'".'" class="w3-button w3-black"><font color="yellow" align="center">Go to the Skill List</font></a></div>';}
+		echo '<div align="center">'.'<a href="skillDashboard.php?Course_ID='."'$Course_ID'".'" class="w3-button w3-black"><font color="yellow" align="center">Go to the Skill List</font></a></div>';}
 	else {
 		echo "<br><b>Incorrectly-answered questions: </b><br><ol>";
 		foreach ($incorrect_question as $q) {
@@ -72,14 +74,13 @@ td,th {
 		$result = mysqli_query($conn,$sql);
 		$hint = mysqli_fetch_row($result)[0];
 		echo "<b>This reference might help: </b>".$hint;
-		//echo '<div align="center">'.'<a href="unfinishedQuestion.php" class="w3-button w3-black"><font align="center" color="yellow">Retry Incorrect Questions</font></a></div><br>';
+		//echo '<div align="center">'.'<a href="skillDashboard.php?Course_ID='."'$Course_ID'".'" class="w3-button w3-black"><font color="yellow" align="center">Go to the Skill List</font></a></div>';}
 		
-	}
-    
+    }
     CloseCon($conn);
 ?>
 
-<br><br><div align='center'> <button class="w3-button w3-black" onclick="goBack()"><font  color="yellow">Back</font></button></div>
+<br><br><div align='center'> <button class="w3-button w3-black" onclick="goBack()"><font  color="yellow">Retry</font></button></div>
 
 <script>
 function goBack() {

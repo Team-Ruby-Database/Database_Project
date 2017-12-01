@@ -1,3 +1,7 @@
+<!--Team Ruby
+--Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
+--Shows all the questions related to the skill that was clicked on the previous page.
+--!>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

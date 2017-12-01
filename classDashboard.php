@@ -1,3 +1,8 @@
+<!--Team Ruby
+--Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
+--This page shows an overview of student progress and buttons for each student that lead to individual views of the student's progress.
+--It also has a "manage skills" button that leads to the skillEditor.php. A back button leads back to professorClasses.php 
+--!>
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">

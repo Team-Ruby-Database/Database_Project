@@ -1,7 +1,6 @@
 <!--Team Ruby
 --Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
---
---
+--The page allows you to add or delete skils. There is also a back button that links classDashboard.php
 --!>
 <!DOCTYPE html>
 <html>

@@ -1,3 +1,8 @@
+<!--Team Ruby
+--Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
+--Once you submit answers for questions, it routes here. If you answered all correctly, it will show a congratulatory message.
+--If you missed some, it will show you the ones you missed and some reference material if the professor provided it. 
+--!>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

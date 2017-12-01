@@ -100,4 +100,8 @@ VALUES
 	,(2,1,'',CURDATE(),CURTIME())
 	,(2,2,'',CURDATE(),CURTIME())
 	,(3,1,'',CURDATE(),CURTIME())
-	,(3,2,'',CURDATE(),CURTIME());
+	,(3,2,'',CURDATE(),CURTIME())
+	,(1,3,'',CURDATE(),CURTIME())
+	,(2,3,'',CURDATE(),CURTIME())
+	,(3,3,'',CURDATE(),CURTIME())
+	;

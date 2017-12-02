@@ -86,3 +86,6 @@ added_skill.php
 
 add_questions.html
 	This is supposed to be the page that displays a message when you successfully add a question in the question_editor.php, but for now it is hardcoded.
+
+newER.png
+	This is the screen shot of the E-R diagram.

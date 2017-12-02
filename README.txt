@@ -5,21 +5,24 @@
 --This is the README for our database application and will provide a brief 
 --overview of the files and what they do.
 
-Right now, the login page doesn't work. Xiao is working on it. 
-
+ -------------------------
+| Important notice	 |
+ -------------------------
+The login page is not implemented correctly. Xiao is working on it. Therefore, 
+1. the professor_id is hardcoded in professorClasses.php.
+2. the student_id is hardcoded in studentClasses.php.
 
  -------------------------
 | How to use the database |
  -------------------------
 1. modify 3 variables in 'db_connection.php'
----$dbhost = "localhost";
----$dbuser = "root";
+---$dbhost = "";
+---$dbuser = "";
 ---$dbpass = "";
 
 2. Use 'initialTables.sql' to initial empty tables
 
 3. Use 'insert.sql' to insert sample data into the database
-
 
 
  -----------------------

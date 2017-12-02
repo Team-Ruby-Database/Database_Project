@@ -2,6 +2,7 @@
 Team Ruby 
 Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
 The page allows you to add or delete skills. There is also a back button that links classDashboard.php It also displays all the skills that a class has at the bottom. You can delete a skill by clicking the "x" next to a question. You can click a skill to edit its questions.
+sometimes has issues with back button not carrying back Course and Class ID
 -->
 
 

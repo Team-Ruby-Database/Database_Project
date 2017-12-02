@@ -10,10 +10,10 @@
  -------------------------
 1. PHP-Login-master.zip contains its own db_connection.php and make sure to modify the username and password in it for the purpose of connecting the database correctly;
 
-2. Any file need to be connected with the login page should be put in the directory: ../PHP-Login-master/login
+2. Any file needed to be connected with the login page should be put in the directory: ../PHP-Login-master/login
 (namely, files have to put in the same directory as the main_login.php)
 
-3. The help pages are not implemented. 
+3. Not all pages have help page.  
 
  -------------------------
 | How to use the database |
@@ -95,3 +95,19 @@ newER.png
 
 PHP-Login-master.zip
 	It is a zip file that contains login pages and header page. 
+	
+	inside PHP-Login-master.zip: 
+	
+	main_login.php: login page
+	Previous: n/a
+	Link to: checklogin.php and signup.php
+	
+	signup.php: sign up form that requires users to fill in and the information will insert into database
+	Previous: main_login.php
+	Linkto: createuser.php
+	
+	checklogin.php: search in the database to see if the email and password user input are exist. Also verify whether the email and password are match.
+	Previous:main_login.php
+	Link to: studentClasses.php or professorClasses.php (depends on which class the user belong to)
+	
+	

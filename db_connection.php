@@ -10,7 +10,7 @@ function OpenCon()
  {
  $dbhost = "localhost";
  $dbuser = "root";
- $dbpass = "centre79,";
+ $dbpass = "";
  $db = "HackerTracker";
  
  

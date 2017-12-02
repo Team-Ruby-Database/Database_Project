@@ -1,7 +1,10 @@
-<!--Team Ruby
+<!--
+Team Ruby
 --Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
 --Inserts a skill into the database
---!>
+-->
+
+
 <!DOCTYPE HTML>
 <html>
     <head>

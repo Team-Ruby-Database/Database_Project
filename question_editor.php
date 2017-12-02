@@ -1,8 +1,6 @@
-<!--Team Ruby
---Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
---
---
---!>
+<!--Team Ruby Victoria Cummings,Yin Song, Michelle Kim, Xiao Jiang
+This page allows you to enter in questions and answers for a skill. It also displays all the questions that a skill has at the bottom. You can delete a question by clicking the "x" next to a question. The back button takes you to back to the skill editor.
+-->
 
 <!DOCTYPE html>
 <html>
@@ -126,14 +124,20 @@ div.tab button.active {
 <?php 
     session_start();
     $Course_ID=$_SESSION['Course_ID'];
-//    $Skill_ID=$_SESSION['Skill_ID'];
+    //$Skill_ID=$_SESSION['Skill_ID'];
+    $_SESSION['Skill_ID'] = $_GET['Skill_ID'];
+    $Skill_ID=$_SESSION['Skill_ID'];
+    $_SESSION['Skill_Name'] = $_GET['Skill_Name'];
+    $Skill_Name=$_SESSION['Skill_Name'];
 	include 'db_connection.php';
 	$con=OpenCon();
+    
+    
     
     echo '
 <h1>Question Editor</h1>
 
-
+<div><form id="myForm" action="added_question.php" method="post">
 <div id="question_div">
 <h3>Question</h3>
     <textarea name="question_input" cols="40" rows="5"></textarea>
@@ -143,14 +147,15 @@ div.tab button.active {
 
 <div id="output_answer">
 <h3>Answer</h3>
+
     <textarea name="output_answer" cols="40" rows="5"></textarea>
 </div>
 <br>
 <div class="tab"><button id="question_button" type="submit">Add Question</button></div>
+</form></div>
     
-    
+    <br><br><h3>All Questions</h3>
 ';
-    
 
     //displays all Questions in Skill
     function displayQuestions($SID,$con) {
@@ -160,36 +165,23 @@ div.tab button.active {
         while($row = $result->fetch_assoc()) {
             $Question_ID = $row["Question_ID"];
             $Question=$row["Question"];
-            echo '<a>'.$Question.'</a><br>';
+            
+                  
+             echo " <div><a>".$Question."</a>
+            <a href='deleted_question.php?Question_ID=".$Question_ID."&Skill_ID=.".$SID."' class='delete'> &#10006;</a></div>";
+            
+            
             }
         }
 
     }
+$_SESSION['Skill_ID'] = $_GET['Skill_ID'];
+    $Skill_ID=$_SESSION['Skill_ID'];
+    displayQuestions($Skill_ID,$con);
 
-//    displayQuestions(1,$con);
 
-    //Adds Question to Skill in DB
-    function addQuestion() {
-        $Question = $_POST['question_input']; 
-        $Answer = $_POST['output_answer'];
-
-        $sql = "INSERT INTO Questions(Question,Answer,Skill_ID) VALUES ($Question,$Answer,$Skill_ID);"; //inserts new Question to DB
-
-        $sql = "SELECT Question FROM Questions WHERE Questions.Question=$Question"; 
-        if ($result-> num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $Question = $row["Question"];
-            echo '<a>"$Question"</a>';
-            }
-        }
-    }
-    
-    echo '<br><br><h3>All Questions</h3>
-    <div><a>1. What is command to display all the files in the working directory?</a><a class="delete"> &#10006;</a></div>
-    
-    
-    ';
-
+//    echo '<a>'.$Skill_ID.'</a>';
+  
  
     echo '<div><a href="skill_editor.php" class="previous">Go Back</a><div>'
         
@@ -198,70 +190,13 @@ div.tab button.active {
 
 <script type="text/javascript">
     document.getElementById("question_button").onclick = function () {
-        location.href = "added_question.html";
+        location.href = "added_question.php";
     };
-</script>
-
-<script>
-    
-    
-    
-    $(document).ready(function() {
-   $('input[type="radio"]').click(function() {
-//       if($(this).attr('id') == 'multiple_choice') {
-//            $("#multiple_choice_answer").show();    
-////           change to get element by
-//       }
-//
-//       if($(this).attr('id') != 'multiple_choice') {
-//            $("#multiple_choice_answer").hide();   
-//       }
-       
-//       if($(this).attr('id') == "short_answer") {
-//            $('#short_answer_answer').show();
-//           $('#question_div').show();
-//       }
-//
-//       if($(this).attr('id') != 'short_answer') {
-//            $('#short_answer_answer').hide();
-//           
-//       }
-//       if($(this).attr('id') == "output") {
-//            $('#output_answer').show(); 
-//           $('#question_div').show();
-//       }
-//
-//       if($(this).attr('id') != 'output') {
-//            $('#output_answer').hide(); 
-//           
-//       }
-   });
-});
-    
-  
-    
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
 </script>
 
 </body>
 </html>
+
+
+
 

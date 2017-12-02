@@ -8,9 +8,7 @@
  -------------------------
 | Important notices	 |
  -------------------------
-1. The login page and header is not implemented correctly. Xiao is working on it. Therefore, 
-(1)the professor_id is hardcoded as 1 (Professor Allen) in professorClasses.php.
-(2) the student_id is hardcoded as 3 (Yin Song) in studentClasses.php.
+
 
 2. The help pages are not implemented. 
 
@@ -92,5 +90,5 @@ add_questions.html
 newER.png
 	This is the screen shot of the E-R diagram.
 
-PHP-Login-master.zip
+PHP-Login-master.zip//
 	It is a zip file that contains login pages and header page. 

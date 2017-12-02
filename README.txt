@@ -9,8 +9,8 @@
 | Important notice	 |
  -------------------------
 The login page is not implemented correctly. Xiao is working on it. Therefore, 
-1. the professor_id is hardcoded in professorClasses.php.
-2. the student_id is hardcoded in studentClasses.php.
+1. the professor_id is hardcoded as 1 (Professor Allen) in professorClasses.php.
+2. the student_id is hardcoded as 3 (Yin Song) in studentClasses.php.
 
  -------------------------
 | How to use the database |

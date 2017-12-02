@@ -8,9 +8,12 @@
  -------------------------
 | Important notices	 |
  -------------------------
+1. PHP-Login-master.zip contains its own db_connection.php and make sure to modify the username and password in it for the purpose of connecting the database correctly;
 
+2. Any file need to be connected with the login page should be put in the directory: ../PHP-Login-master/login
+(namely, files have to put in the same directory as the main_login.php)
 
-2. The help pages are not implemented. 
+3. The help pages are not implemented. 
 
  -------------------------
 | How to use the database |
@@ -90,5 +93,5 @@ add_questions.html
 newER.png
 	This is the screen shot of the E-R diagram.
 
-PHP-Login-master.zip//
+PHP-Login-master.zip
 	It is a zip file that contains login pages and header page. 
